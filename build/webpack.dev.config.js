@@ -4,11 +4,12 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-27 11:37:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-27 16:19:03
+ * @LastEditTime: 2021-12-28 11:54:58
  */
 const {merge} = require('webpack-merge')
 const common = require('./webpack.config.js')
 const webpack = require('webpack')
+const path = require('path')
 const devConfig = merge(common,{
   mode:'development',
   devtool:'eval-cheap-module-source-map',
@@ -20,6 +21,11 @@ const devConfig = merge(common,{
       errors:true,
       warnings:true
       } 
+    },
+    historyApiFallback: {
+      rewrites: [
+        { from: /.*/, to: path.posix.join('/', 'index.html') },
+      ]
     },
   },
   module:{

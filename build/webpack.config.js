@@ -4,12 +4,12 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-26 16:14:42
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-27 16:43:51
+ * @LastEditTime: 2021-12-28 13:55:32
  */
 
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HTMLPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} =require('clean-webpack-plugin')
 //处理路径
 function resolve(dir){
@@ -48,8 +48,10 @@ const config = {
   },
   plugins:[
     new VueLoaderPlugin(),
-    new HTMLPlugin({
-      title: '模块热替换'
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: resolve('public/index.html'),
+      title: '模块热替换',
     }),
     new CleanWebpackPlugin(),
   ]

@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-27 11:37:44
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-27 17:53:44
+ * @LastEditTime: 2021-12-28 14:15:08
  */
 const {merge} = require('webpack-merge')
 const common = require('./webpack.config.js')
@@ -51,7 +51,6 @@ const prodConfig = merge(common,{
       chunks: 'all',
       cacheGroups: {
 				default:false,
-				// 打包重复出现的代码
 				vendor: {
 					name: 'vendor',
 					chunks: 'initial',
@@ -66,8 +65,8 @@ const prodConfig = merge(common,{
 					minChunks: Infinity
 				}
       }
-    }
-
+    },
+    runtimeChunk:true
   }
 })
 module.exports = prodConfig

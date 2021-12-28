@@ -4,14 +4,18 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-26 16:12:55
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-27 18:06:08
+ * @LastEditTime: 2021-12-28 14:23:38
 -->
 <template>
   <div id="app">
-    <p>{{txt}}</p>
+    <p>{{title}}</p>
+    <p>{{introduction}}</p>
     <img class="img" :src="img" alt="">
-    <p>num:{{num}}</p>
-    <button>vue-router</button>
+    <router-view></router-view>
+    <div class="nav">
+      <router-link to='/home'>home</router-link>
+      <router-link to='/about'>about</router-link>
+    </div>
   </div>
 
 </template>
@@ -22,8 +26,8 @@ import img from  './assets/ganda.jpeg'
     name: '',
     data() {
       return {
-        txt:'vue',
-        num:0,
+        title:'stmi-cli',
+        introduction:'🎉 webpack5 vue2 cli',
         img,
       }
     },
@@ -33,12 +37,22 @@ import img from  './assets/ganda.jpeg'
   }
 </script>
 
-<style scoped>
- #app{
-   color: rgb(110, 74, 74);
- }
+<style lang='less' scoped>
+ #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  >p:nth-of-type(1){
+    font-size: 50px;
+  }
+  >p:nth-of-type(2){
+    font-size: 30px;
+  }
+}
  .img{
-   width: 300px;
-   height: 200px;
+   width: 800px;
+   height: 500px;
  }
 </style>
