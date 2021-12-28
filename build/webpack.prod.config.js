@@ -4,13 +4,15 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-27 11:37:44
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-28 14:15:08
+ * @LastEditTime: 2021-12-28 17:51:31
  */
 const {merge} = require('webpack-merge')
 const common = require('./webpack.config.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require("terser-webpack-plugin");
 const os = require('os');
+const path = require('path')
 const prodConfig = merge(common,{
   mode:'production',
   module:{
@@ -35,7 +37,16 @@ const prodConfig = merge(common,{
     new MiniCssExtractPlugin({
       filename:'css/[name].[chunkhash:8].css',
       chunkFilename:'css/[name].[chunkhash:8].css',
-    })
+    }),
+    new CopyWebpackPlugin(
+     { 
+      patterns:[{
+      from:path.resolve(__dirname,'../src/assets'),
+      to:path.resolve(__dirname,'../dist/img')
+        }]
+      }
+    )
+    ,
   ],
   optimization:{
     minimize: true,
@@ -49,21 +60,13 @@ const prodConfig = merge(common,{
     })],
     splitChunks:{
       chunks: 'all',
-      cacheGroups: {
-				default:false,
-				vendor: {
-					name: 'vendor',
-					chunks: 'initial',
-					minChunks: 2,
-					maxInitialRequests: 5,
-					minSize: 0
-				},
-				// 打包第三方类库
-				commons: {
-					name: 'commons',
-					chunks: 'initial',
-					minChunks: Infinity
-				}
+      cacheGroups:{
+        libs: {
+          name: "chunk-libs",
+          test: /[\\/]node_modules[\\/]/,
+          priority: 10,
+          chunks: "initial" // 只打包初始时依赖的第三方
+        }
       }
     },
     runtimeChunk:true

@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-27 11:37:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-28 11:54:58
+ * @LastEditTime: 2021-12-28 17:38:21
  */
 const {merge} = require('webpack-merge')
 const common = require('./webpack.config.js')
@@ -14,8 +14,10 @@ const devConfig = merge(common,{
   mode:'development',
   devtool:'eval-cheap-module-source-map',
   devServer:{ 
+    static:['assets'], //本地开发直接读取静态文件资源 提高性能
     port:8000,
     host:'0.0.0.0',
+    compress:true,
     client:{
       overlay: {
       errors:true,
