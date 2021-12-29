@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-26 16:12:55
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-29 13:45:30
+ * @LastEditTime: 2021-12-29 14:51:39
 -->
 <template>
   <div id="app">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import img from  '@/assets/ganda.jpeg'
+import img from  '@/assets/ganda.png'
   export default {
     name: '',
     data() {
@@ -51,7 +51,7 @@ import img from  '@/assets/ganda.jpeg'
   }
 }
  .img{
-   width: 800px;
-   height: 500px;
+   width: 80%;
+   height: 80%;
  }
 </style>
