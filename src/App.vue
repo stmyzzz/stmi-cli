@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-26 16:12:55
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-28 16:40:07
+ * @LastEditTime: 2021-12-29 13:45:30
 -->
 <template>
   <div id="app">
@@ -17,7 +17,6 @@
       <router-link to='/about'>about</router-link>
     </div>
   </div>
-
 </template>
 
 <script>

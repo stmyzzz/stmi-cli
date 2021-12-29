@@ -4,12 +4,13 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-27 11:37:18
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-28 17:38:21
+ * @LastEditTime: 2021-12-29 13:48:31
  */
 const {merge} = require('webpack-merge')
 const common = require('./webpack.config.js')
 const webpack = require('webpack')
 const path = require('path')
+
 const devConfig = merge(common,{
   mode:'development',
   devtool:'eval-cheap-module-source-map',
@@ -35,7 +36,7 @@ const devConfig = merge(common,{
       {
         test: /\.(le|c)ss$/,
         use:[
-          'style-loader',
+          'style-loader',  // 通过 style 标签注入
           'css-loader',
           {
             loader: 'postcss-loader',
