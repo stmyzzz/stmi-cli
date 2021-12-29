@@ -4,7 +4,7 @@
  * @Author: dlyan.ding
  * @Date: 2021-12-26 16:14:42
  * @LastEditors: dlyan.ding
- * @LastEditTime: 2021-12-29 14:40:14
+ * @LastEditTime: 2021-12-29 14:41:50
  */
 
 const path = require('path')
@@ -105,7 +105,7 @@ const config = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('public/index.html'),
-      title: '模块热替换',
+      title: 'stmi-cli',
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
